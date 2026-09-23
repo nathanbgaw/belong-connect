@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { zodOutputFormat } from "@anthropic-ai/sdk/helpers/zod";
-import { anthropic, MODEL } from "./ai";
+import { addUsage, anthropic, describeUsage, emptyUsage, MODEL_EXTRACT } from "./ai";
 import { CATEGORIES } from "./categories";
 import type { CrawledPage } from "./crawl";
 import { pagesToPrompt } from "./crawl";
@@ -48,7 +48,7 @@ const SYSTEM = `You read a church's public website and produce a structured, hon
 export async function extractProfile(pages: CrawledPage[], website: string): Promise<ChurchProfile> {
   const client = anthropic();
   const response = await client.messages.parse({
-    model: MODEL,
+    model: MODEL_EXTRACT,
     max_tokens: 12_000,
     system: SYSTEM,
     messages: [
@@ -60,6 +60,7 @@ export async function extractProfile(pages: CrawledPage[], website: string): Pro
     output_config: { format: zodOutputFormat(ProfileSchema), effort: "low" },
   });
   const parsed = response.parsed_output;
+  console.log(`[extract] ${website} — ${describeUsage(addUsage(emptyUsage(), response), MODEL_EXTRACT)}`);
   if (!parsed) throw new Error("The model did not return a usable profile for this site.");
   const pageUrls = new Set(pages.map((p) => p.url));
   return {

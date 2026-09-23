@@ -21,7 +21,7 @@ says nothing about help, the inventory says so rather than padding.
  a URL (from a person, or from OpenStreetMap near a zip)
    → crawl     homepage + up to 7 internal pages chosen by link text
                (ministries, outreach, serve, food, care, groups, about, contact …)
-   → extract   Claude (claude-opus-5, structured output, low effort) → ChurchProfile
+   → extract   Claude (claude-sonnet-5 by default, structured output, low effort) → ChurchProfile
                name · address · phone · email · summary · ministries · resources[]
    → geocode   zip → zippopotam.us, else address → Nominatim  (no API keys)
    → store     Supabase (bc_churches, bc_resources) · cached 30 days by host
@@ -54,7 +54,7 @@ npm run dev                    # http://localhost:3000
 | `POSTGRES_PASSWORD` | `db:migrate` and the seed script only. |
 | `ANTHROPIC_API_KEY` | Extraction and chat. |
 | `CANVA_CLIENT_ID`, `CANVA_CLIENT_SECRET` | Optional. One-click "Add to Canva". Create an integration in the [Canva developer portal](https://www.canva.com/developers/), scopes `design:content:write design:meta:read`, redirect URL `https://<host>/api/canva/callback`. Without it, the UI points at Canva's native PPTX import. |
-| `BELONG_MODEL` | Optional. Defaults to `claude-opus-5`. |
+| `BELONG_MODEL_CHAT`, `BELONG_MODEL_EXTRACT` | Optional. Both default to `claude-sonnet-5` (about $0.02 per chat answer, $0.03 per site read). |
 
 ### Seed it with real Maryland churches
 
