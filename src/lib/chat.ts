@@ -302,10 +302,6 @@ function withCacheBreakpoint(messages: Anthropic.MessageParam[]): Anthropic.Mess
 
 const MAX_ITERATIONS = 10;
 
-
-
-const MAX_ITERATIONS = 10;
-
 export async function runChatTurn(
   history: Anthropic.MessageParam[],
   userMessage: string,
