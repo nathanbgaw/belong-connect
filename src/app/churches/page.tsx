@@ -21,7 +21,7 @@ export default async function Directory() {
       </p>
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {sorted.map((c) => (
-          <Link key={c.id} href={`/churches/${c.slug}`} className="panel flex flex-col gap-2 p-5 transition hover:shadow-[var(--shadow-e2)]">
+          <Link key={c.id} prefetch={false} href={`/churches/${c.slug}`} className="panel flex flex-col gap-2 p-5 transition hover:shadow-[var(--shadow-e2)]">
             <div className="flex items-start justify-between gap-2">
               <h2 className="text-lg leading-tight">{c.name}</h2>
               <span className="pill pill-primary shrink-0">{counts.get(c.id) ?? 0}</span>
