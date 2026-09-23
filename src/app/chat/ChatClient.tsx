@@ -201,7 +201,6 @@ export default function ChatClient() {
               <button className="btn btn-primary" onClick={() => downloadDeck("pptx")} disabled={deckBusy}>PowerPoint</button>
               <button className="btn btn-secondary" onClick={() => downloadDeck("pdf")} disabled={deckBusy}>PDF</button>
             </div>
-            <p className="mt-2 text-xs text-muted">Drop the PowerPoint on canva.com/import to edit it in Canva.</p>
           </div>
         )}
         <div className="panel p-5 text-sm text-muted">

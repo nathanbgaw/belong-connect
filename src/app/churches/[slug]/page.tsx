@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import ChurchProfile from "@/components/ChurchProfile";
@@ -29,7 +28,7 @@ export default async function ChurchPage({ params }: PageProps<"/churches/[slug]
         </div>
       ) : (
         <>
-          <div className="mb-6"><Suspense><DeckButtons slug={church.slug} name={church.name} /></Suspense></div>
+          <div className="mb-6"><DeckButtons slug={church.slug} name={church.name} /></div>
           <ChurchProfile church={church} resources={resources} />
         </>
       )}

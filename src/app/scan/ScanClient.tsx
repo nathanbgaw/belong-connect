@@ -55,7 +55,7 @@ export default function ScanClient() {
       <h1 className="mt-1 text-3xl">Read a church website</h1>
       <p className="mt-2 max-w-2xl text-muted">
         Paste a church’s web address. We read the homepage and the pages most likely to describe ministries and help,
-        draft an inventory of what the church offers its community, and build a deck you can download or send to Canva.
+        draft an inventory of what the church offers its community, and build a deck you can download as PowerPoint or PDF.
       </p>
 
       <form

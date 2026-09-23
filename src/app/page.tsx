@@ -28,7 +28,7 @@ export default async function Home() {
           href="/scan"
           eyebrow="Tool 1 · for churches & staff"
           title="Read a church website"
-          body="Paste any church's web address. We read the site, draft an inventory of what it offers the community, and hand you a slide deck — PowerPoint, PDF, or straight into Canva."
+          body="Paste any church's web address. We read the site, draft an inventory of what it offers the community, and hand you a slide deck as PowerPoint or PDF."
           cta="Try it with a URL"
         />
         <Door
