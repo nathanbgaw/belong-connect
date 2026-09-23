@@ -1,26 +1,104 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Project Belong Maryland palette — same tokens as Belong Highway. */
+  --color-paper: #f4f1ea;
+  --color-card: #fffefc;
+  --color-faint: #efebe1;
+  --color-line: #e3dfd4;
+  --color-ink: #2d2526;
+  --color-muted: #6b6260;
+  --color-primary: #bf3147;
+  --color-primary-deep: #9b2439;
+  --color-primary-soft: #f6e3e7;
+  --color-gold: #e7c41f;
+  --color-gold-deep: #7c6508;
+  --color-gold-soft: #f9f0ce;
+  --color-slate: #495a57;
+  --color-slate-deep: #3d4c49;
+  --color-slate-soft: #e6eae8;
+  --color-ok: #0e7e64;
+  --color-ok-soft: #e1f2ec;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-display: var(--font-marcellus), ui-serif, Georgia, serif;
+  --font-sans: var(--font-cabin), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 24px;
+  --radius-panel: 18px;
+  --radius-field: 14px;
+  --radius-pill: 999px;
+
+  --shadow-e1: 0 1px 2px rgb(45 37 38 / 0.04), 0 4px 12px rgb(45 37 38 / 0.05);
+  --shadow-e2: 0 2px 4px rgb(45 37 38 / 0.04), 0 10px 28px rgb(45 37 38 / 0.07);
+  --shadow-e3: 0 4px 8px rgb(45 37 38 / 0.05), 0 20px 48px rgb(45 37 38 / 0.1);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
 }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-slate);
+  outline-offset: 3px;
+}
+
+.card {
+  background: var(--color-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-e1);
+}
+.panel {
+  background: var(--color-card);
+  border-radius: var(--radius-panel);
+  box-shadow: var(--shadow-e1);
+}
+.field {
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-field);
+  padding: 0.8rem 1rem;
+  width: 100%;
+  font: inherit;
+  color: var(--color-ink);
+}
+.field::placeholder { color: #9a918e; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  border-radius: var(--radius-pill); padding: 0.7rem 1.25rem; font-weight: 600; font-size: 0.95rem;
+  transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+  cursor: pointer; border: 0; text-decoration: none;
+}
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.btn-primary { background: var(--color-primary); color: #fff; box-shadow: 0 6px 18px rgb(155 36 57 / 0.2); }
+.btn-primary:hover:not(:disabled) { background: var(--color-primary-deep); transform: translateY(-1px); }
+.btn-secondary { background: var(--color-card); color: var(--color-ink); box-shadow: var(--shadow-e1); border: 1px solid var(--color-line); }
+.btn-secondary:hover:not(:disabled) { background: var(--color-faint); }
+.btn-quiet { background: transparent; color: var(--color-primary-deep); padding-inline: 0.5rem; }
+.btn-quiet:hover:not(:disabled) { background: var(--color-primary-soft); }
+.pill {
+  display: inline-block; border-radius: var(--radius-pill); padding: 0.15rem 0.65rem; font-size: 0.78rem; font-weight: 600;
+  background: var(--color-faint); color: var(--color-slate-deep);
+}
+.pill-primary { background: var(--color-primary-soft); color: var(--color-primary-deep); }
+.pill-gold { background: var(--color-gold-soft); color: var(--color-gold-deep); }
+.pill-ok { background: var(--color-ok-soft); color: var(--color-ok); }
+.eyebrow { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; color: var(--color-primary); }
+.prose-chat p { margin: 0 0 0.6rem; }
+.prose-chat p:last-child { margin-bottom: 0; }
+.prose-chat ul { margin: 0.25rem 0 0.6rem 1.1rem; list-style: disc; }
+.prose-chat li { margin: 0.2rem 0; }
+.prose-chat a { color: var(--color-primary-deep); text-decoration: underline; }
+.prose-chat strong { font-weight: 700; }
+@keyframes pulse-dot { 0%, 100% { opacity: 0.3 } 50% { opacity: 1 } }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--color-primary); animation: pulse-dot 1.2s infinite; }
